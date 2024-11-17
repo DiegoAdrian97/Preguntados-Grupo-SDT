@@ -1,4 +1,4 @@
-lista_usuario = []
+
 
 def crear_usuario(lista: list) -> dict:
     """
@@ -45,10 +45,6 @@ def iniciar_sesion(lista: list) -> str:
             while usuario["contraseña"] != contraseña:
                 contraseña = input("Contraseña incorrecta, intente nuevamente: ")
         print("se inicio sesion correctamente")
+        return True
 
-        
-
-
-crear_usuario(lista_usuario)
-resultado = iniciar_sesion(lista_usuario)
-print(resultado)
+    return False
