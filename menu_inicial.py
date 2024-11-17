@@ -1,7 +1,23 @@
 from funciones_generales import *
 from manejo_de_usuarios import *
 
-lista_usuarios = []
+import json
+
+
+datos = {"usuarios": [], "top_puntuaciones": []}
+
+# Cargar usuarios desde un archivo JSON
+with open("./Parcial/Preguntados-Grupo-SDT/usuarios.json", "r") as archivo:
+    users_data = json.load(archivo)
+    
+def guardar_datos(archivo_json, datos):
+    with open(archivo_json, "w") as archivo:
+        json.dump(datos, archivo)
+
+def eliminar_datos_previos(archivo_json, datos):
+    with open(archivo_json, "w") as archivo:
+        json.dump(datos, archivo)
+
 
 def menu():
 
@@ -10,17 +26,20 @@ def menu():
         print("1. Registrarse")
         print("2. Iniciar partida")
         print("3. Ver top 10")
-        print("4. Ver respuesta")
+        print("4. Eliminar datos previos")
         print ("5. Salir")
         
         opcion = int(input("Seleccione una opción: "))
         
         if opcion == 1:
-            crear_usuario(lista_usuarios)
+            nuevo_user = crear_usuario()
+            datos["usuarios"].append(nuevo_user)
+            
+            guardar_datos("./Parcial/Preguntados-Grupo-SDT/usuarios.json", datos)
             
         elif opcion == 2:
             #Iniciar partida
-            if iniciar_sesion(lista_usuarios):
+            if iniciar_sesion(datos["usuarios"]):
                 iniciar_juego()
             else:
                 print("No se pudo iniciar la partida. Registrese primero")
@@ -29,8 +48,7 @@ def menu():
             #Ver top10
             pass
         elif opcion == 4:
-            #Ver respuesta
-            pass
+            eliminar_datos_previos("./Parcial/Preguntados-Grupo-SDT/usuarios.json", datos)
         elif opcion == 5:
             break
         else:

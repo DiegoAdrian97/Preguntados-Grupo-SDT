@@ -33,10 +33,10 @@ def iniciar_juego():
         return categoria, pregunta_aleatoria
     
     
-    vidas_del_usuario = 3
     
     
-    def mostrar_pregunta(pregunta,vidas_del_usuario):
+    def mostrar_pregunta(pregunta,vidas_del_usuario, puntos):
+        
         '''
         ¿Que hace?: Muestra en pantalla el texto de la pregunta, sus opciones (A, B o C) y define si es correcta o no lo es.
         ¿Que recibe?:      
@@ -48,13 +48,8 @@ def iniciar_juego():
         
         print("Pregunta:", pregunta["pregunta"])
 
-        # Lista de letras para las opciones
         letras_opciones = ["A", "B", "C"]
         
-        
-        
-        
-        # Bucle for para asociar una letra con una opcion
         for i in range(len(pregunta["opciones"])):
             letra = letras_opciones[i]
             opcion = pregunta["opciones"][i]
@@ -67,29 +62,37 @@ def iniciar_juego():
         
         indice = letras_opciones.index(respuesta_usuario)
         if pregunta["opciones"][indice] == pregunta["opciones"][letras_opciones.index(pregunta["respuesta"])]:
-            print("Tu respuesta es... ¡CORRECTA!")
             respuesta_correcta = True
-            
-            
-        else:
-            print("Tu respuesta es... Incorrecta. La respuesta era la opción", pregunta["respuesta"])
-            respuesta_correcta = False
-        
-        if respuesta_correcta == True:
+            puntos += 25
+            print(f'''
+                  Tu respuesta es... ¡CORRECTA!
+                  Tu puntuacion: {puntos} puntos!
+                  ''')
             categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
-            mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario)
+            mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos)
+            
         else:
+            respuesta_correcta = False
+            if puntos > 10:
+                puntos -= 10
+            else:
+                puntos = 0
+            print(f'''
+                  Tu respuesta es... Incorrecta. La respuesta era la opción {pregunta["respuesta"]}
+                  Tu puntuacion: {puntos} puntos!
+                  ''', )
             vidas_del_usuario -= 1
-            print("Te quedan", vidas_del_usuario, "vidas restantes.")
             if vidas_del_usuario == 0:
                     print("Te quedaste sin vidas. Has perdido la partida.")
-                    return
+                    return puntos
             else:
+                print("Te quedan", vidas_del_usuario, "vidas restantes.")
                 categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
-                mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario)
+                mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos)        
         
-        
+    vidas_del_usuario = 3
+    puntos = 0
     
     categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
-    mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario)
+    mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos)
     

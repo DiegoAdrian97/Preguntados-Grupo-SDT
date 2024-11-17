@@ -1,6 +1,6 @@
 
 
-def crear_usuario(lista: list) -> dict:
+def crear_usuario() -> dict:
     """
     ¿Qué hace?: permite al usuario crear un usuario y contraseña para ingresar al sistema.
     ¿Qué recibe?: Recibe una lista que contendrá los datos del usuario en modo diccionario.
@@ -24,10 +24,12 @@ def crear_usuario(lista: list) -> dict:
     
     usuario = {
         "nombre": nombre,
-        "contraseña": contraseña
+        "contrasenia": contraseña,
+        "puntuacion": 0
     }
     
-    lista.append(usuario)
+    return usuario
+    
 
     
 def iniciar_sesion(lista: list) -> str:
