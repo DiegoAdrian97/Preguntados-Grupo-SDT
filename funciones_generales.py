@@ -21,6 +21,7 @@ def mostrar_pregunta(pregunta):
             - pregunta (dict): Un diccionario con: pregunta["pregunta"] El texto de la pregunta (str), pregunta["opciones"]: Una lista de opciones de respuesta (list de str), pregunta["respuesta"]: La respuesta correcta (str).
     ¿Que retorna?: -
     '''
+    respuesta_correcta = False
     print("Pregunta:", pregunta["pregunta"])
 
     # Lista de letras para las opciones
@@ -39,6 +40,17 @@ def mostrar_pregunta(pregunta):
     indice = letras_opciones.index(respuesta_usuario)
     if pregunta["opciones"][indice] == pregunta["opciones"][letras_opciones.index(pregunta["respuesta"])]:
         print("Tu respuesta es... ¡CORRECTA!")
+        respuesta_correcta = True
+        
+        
     else:
         print("Tu respuesta es... Incorrecta. La respuesta era la opción", pregunta["respuesta"])
+        respuesta_correcta = False
+    
+    if respuesta_correcta == True:
+        categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
+        mostrar_pregunta(pregunta_aleatoria)
+        
+    
+    
         

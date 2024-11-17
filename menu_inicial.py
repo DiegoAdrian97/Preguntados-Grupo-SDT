@@ -17,8 +17,6 @@ def menu():
         
         if opcion == 1:
             crear_usuario(lista_usuarios)
-            resultado = iniciar_sesion(lista_usuarios)
-            print(resultado)
             
         elif opcion == 2:
             #Iniciar partida
