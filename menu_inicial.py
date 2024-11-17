@@ -21,9 +21,7 @@ def menu():
         elif opcion == 2:
             #Iniciar partida
             if iniciar_sesion(lista_usuarios):
-                categoria, pregunta = elegir_pregunta_aleatoria()
-                print("Categoria: ", categoria)
-                mostrar_pregunta(pregunta)
+                iniciar_juego()
             else:
                 print("No se pudo iniciar la partida. Registrese primero")
             pass
