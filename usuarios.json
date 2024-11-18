@@ -1,1 +1,1 @@
-{"usuarios": [], "top_puntuaciones": []}
+{"usuarios": [{"nombre": "qweqwe123", "contrasenia": "qweqwe123", "puntuacion": 0}, {"nombre": "diego123", "contrasenia": "diego123", "puntuacion": 0}], "top_puntuaciones": [{"usuario": "diego123", "puntuacion": 95}, {"usuario": "diego123", "puntuacion": 5}, {"usuario": "qweqwe123", "puntuacion": 30}]}

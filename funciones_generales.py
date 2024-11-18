@@ -1,8 +1,10 @@
 from preguntas import *
+from file_system import *
+from manejo_de_usuarios import *
 import random
 import time
     
-def iniciar_juego():
+def iniciar_juego(datos):
     
     #region temporizador SOLO EN PYGAME
     # def contador_regresivo(segundos):
@@ -35,7 +37,7 @@ def iniciar_juego():
     
     
     
-    def mostrar_pregunta(pregunta,vidas_del_usuario, puntos):
+    def mostrar_pregunta(pregunta,vidas_del_usuario, puntos, datos):
         
         '''
         ¿Que hace?: Muestra en pantalla el texto de la pregunta, sus opciones (A, B o C) y define si es correcta o no lo es.
@@ -69,7 +71,7 @@ def iniciar_juego():
                   Tu puntuacion: {puntos} puntos!
                   ''')
             categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
-            mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos)
+            mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos, datos)
             
         else:
             respuesta_correcta = False
@@ -84,15 +86,20 @@ def iniciar_juego():
             vidas_del_usuario -= 1
             if vidas_del_usuario == 0:
                     print("Te quedaste sin vidas. Has perdido la partida.")
-                    return puntos
+                    print(f"Tu puntuacion final es de {puntos} puntos.")
+                    partida = {
+                    "usuario": datos.get("usuarios")[-1]["nombre"],
+                    "puntuacion": puntos}
+                    datos["top_puntuaciones"].append(partida)
+                    return guardar_datos(datos)
             else:
                 print("Te quedan", vidas_del_usuario, "vidas restantes.")
                 categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
-                mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos)        
+                mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos, datos)        
         
     vidas_del_usuario = 3
     puntos = 0
     
     categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
-    mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos)
+    mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos, datos)
     

@@ -19,6 +19,7 @@ temporizador(10)
 
 import time
 
+
 def contador_regresivo(segundos):
     while segundos > 0:
         print(f"Tiempo restante: {segundos} segundos", end="\r")

@@ -12,33 +12,26 @@ def menu():
 
     while True:
         print("\nMenú de opciones:")
-        print("1. Registrarse")
-        print("2. Iniciar partida")
-        print("3. Ver top 10")
-        print("4. Eliminar datos previos")
-        print ("5. Salir")
+        print("A. Registrarse")
+        print("B. Iniciar partida")
+        print("C. Ver top 10")
+        print("D. Eliminar datos previos")
+        print ("E. Salir")
         
-        opcion = int(input("Seleccione una opción: "))
+        opcion = str(input("Seleccione una opción (A-E): ")).upper()
         
-        if opcion == 1:
-            nuevo_user = crear_usuario()
-            datos["usuarios"].append(nuevo_user)
+        if opcion == "A":
+            crear_usuario("./Parcial/Preguntados-Grupo-SDT/usuarios.json", leer_datos())
             
-            guardar_datos("./Parcial/Preguntados-Grupo-SDT/usuarios.json", datos)
-            
-        elif opcion == 2:
+        elif opcion == "B":
             #Iniciar partida
-            if iniciar_sesion(datos["usuarios"]):
-                iniciar_juego()
-            else:
-                print("No se pudo iniciar la partida. Registrese primero")
-            pass
-        elif opcion == 3:
+            iniciar_juego(iniciar_sesion(leer_datos()))
+        elif opcion == "C":
             #Ver top10
             pass
-        elif opcion == 4:
+        elif opcion == "D":
             eliminar_datos_previos("./Parcial/Preguntados-Grupo-SDT/usuarios.json", datos)
-        elif opcion == 5:
+        elif opcion == "E":
             break
         else:
             print("Opción no válida. Intente de nuevo.")
