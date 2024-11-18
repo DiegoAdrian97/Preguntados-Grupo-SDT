@@ -1,22 +1,11 @@
 from funciones_generales import *
 from manejo_de_usuarios import *
-
-import json
+from file_system import *
 
 
 datos = {"usuarios": [], "top_puntuaciones": []}
 
-# Cargar usuarios desde un archivo JSON
-with open("./Parcial/Preguntados-Grupo-SDT/usuarios.json", "r") as archivo:
-    users_data = json.load(archivo)
-    
-def guardar_datos(archivo_json, datos):
-    with open(archivo_json, "w") as archivo:
-        json.dump(datos, archivo)
 
-def eliminar_datos_previos(archivo_json, datos):
-    with open(archivo_json, "w") as archivo:
-        json.dump(datos, archivo)
 
 
 def menu():
