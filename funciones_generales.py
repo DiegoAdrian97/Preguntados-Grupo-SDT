@@ -103,3 +103,24 @@ def iniciar_juego(datos):
     categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
     mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos, datos)
     
+def ver_top10(datos):
+    '''
+    ¿Qué hace?: Muestra el top 10 de puntuaciones de los usuarios.
+    ¿Qué recibe?: El diccionario con los datos de los usuarios y sus puntuaciones.
+    ¿Qué retorna?: Una lista con las 10 mejores puntuaciones y sus usuarios.
+    '''
+    top_puntuaciones = datos.get("top_puntuaciones")
+
+    if not top_puntuaciones:
+        print("No hay puntuaciones registradas.")
+        return []
+    
+    top_puntuaciones_ordenado = sorted(top_puntuaciones, reverse=True, key=lambda puntuacion: puntuacion["puntuacion"])
+
+    top= top_puntuaciones_ordenado[:10]
+
+    print("Top 10 puntuaciones:")
+    for i in range(len(top)):
+        top10 = print(f"{i + 1}. Usuario: {top[i]['usuario']}, Puntuación: {top[i]['puntuacion']}")
+
+    return top10

@@ -27,7 +27,7 @@ def menu():
             #Iniciar partida
             iniciar_juego(iniciar_sesion(leer_datos()))
         elif opcion == "C":
-            #Ver top10
+            ver_top10(leer_datos())
             pass
         elif opcion == "D":
             eliminar_datos_previos("./Parcial/Preguntados-Grupo-SDT/usuarios.json", datos)
