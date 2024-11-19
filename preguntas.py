@@ -30,6 +30,7 @@ preguntas = {
         }
     ],
     "Ciencias": [
+        
         {
             "pregunta": "¿Qué planeta es conocido como el planeta rojo?",
             "opciones": ["Marte", "Venus", "Júpiter"],

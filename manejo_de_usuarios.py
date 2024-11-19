@@ -1,6 +1,6 @@
 from file_system import *
 
-def crear_usuario(datos) -> dict:
+def crear_usuario(datos: dict) -> dict:
     """
     ¿Qué hace?: permite al usuario crear un usuario y contraseña para ingresar al sistema.
     ¿Qué recibe?: Recibe una lista que contendrá los datos del usuario en modo diccionario.

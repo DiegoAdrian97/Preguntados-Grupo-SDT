@@ -6,7 +6,11 @@ import time
 
 
     
-def iniciar_juego(datos, vidas_del_usuario, puntos, puntos_por_correcta):
+def iniciar_juego(datos: dict, vidas_del_usuario: int, puntos: int, puntos_por_correcta: int) -> None:
+    '''
+        ¿Que hace?: Comienza el juego, se elige aleatoriamente una pregunta y se muestra en pantalla.
+        ¿Que recibe?: Los datos del usuario que juega, la cantidad de vidas y la cantidad de puntos y la configuracion del juego.
+        ¿Que retorna?: La pregunta elegida aleatoriamente dentro de la categoría, que incluye el texto de la pregunta, las opciones y la respuesta correcta.'''
     
     #region temporizador SOLO EN PYGAME
     # def contador_regresivo(segundos):
@@ -24,7 +28,7 @@ def iniciar_juego(datos, vidas_del_usuario, puntos, puntos_por_correcta):
     #     tiempo_corriendo = False 
     
     #endregion
-    def elegir_pregunta_aleatoria():
+    def elegir_pregunta_aleatoria() -> str:
         '''
         ¿Que hace?: Selecciona aleatoriamente una categoría de preguntas y luego elige aleatoriamente una pregunta dentro de esa categoría.
         ¿Que recibe?: No recibe nada, pero utiliza el diccionario de preguntas, opciones y respuestas.
@@ -39,7 +43,7 @@ def iniciar_juego(datos, vidas_del_usuario, puntos, puntos_por_correcta):
     
     
     
-    def mostrar_pregunta(pregunta,vidas_del_usuario, puntos, datos):
+    def mostrar_pregunta(pregunta: str,vidas_del_usuario: int, puntos: int, datos: dict)-> str:
         
         '''
         ¿Que hace?: Muestra en pantalla el texto de la pregunta, sus opciones (A, B o C) y define si es correcta o no lo es.
@@ -102,7 +106,7 @@ def iniciar_juego(datos, vidas_del_usuario, puntos, puntos_por_correcta):
     categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
     mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos, datos)
     
-def ver_top10(datos):
+def ver_top10(datos: dict) -> dict:
     '''
     ¿Qué hace?: Muestra el top 10 de puntuaciones de los usuarios.
     ¿Qué recibe?: El diccionario con los datos de los usuarios y sus puntuaciones.
@@ -116,7 +120,7 @@ def ver_top10(datos):
     
     top_puntuaciones_ordenado = sorted(top_puntuaciones, reverse=True, key=lambda puntuacion: puntuacion["puntuacion"])
 
-    top= top_puntuaciones_ordenado[:10]
+    top = top_puntuaciones_ordenado[:10]
 
     print("Top 10 puntuaciones:")
     for i in range(len(top)):
@@ -124,7 +128,13 @@ def ver_top10(datos):
 
     return top10
 
-def configuracion_del_juego(configuracion_del_juego):
+def configuracion_del_juego(configuracion_del_juego: dict) -> dict :
+    '''
+    ¿Que hace?: Modifica la configuracion default del juego
+    ¿Que recibe?: El diccionario con la configuracion del juego
+    ¿Que retorna?: La configuracion del juego actualizada
+    '''
+    
     
     while True:
         print("\nConfiguración del juego:")
@@ -147,3 +157,51 @@ def configuracion_del_juego(configuracion_del_juego):
             print("Opción no válida. Intente de nuevo.")
     
     return vidas_del_usuario, puntos_por_correcta
+
+def menu_agregar_pregunta(preguntas: dict) -> dict:
+    '''
+    ¿Que hace?: Muestra el menu de agregar preguntas
+    ¿Que recibe?: El diccionario con las preguntas
+    ¿Que retorna?: El diccionario con las preguntas actualizado
+    '''
+    def agregar_pregunta(preguntas:dict) -> dict:
+        '''
+        ¿Que hace?: Agrega preguntas al diccionario de preguntas
+        ¿Que recibe?: El diccionario con las preguntas
+        ¿Que retorna?: El diccionario con las preguntas actualizado
+        '''
+    
+        categoria = input("Ingrese la categoria de la pregunta: ")
+        while categoria not in preguntas.keys():
+            categoria = input("Categoría Inexistente. Por favor, ingrese una categoría existente: ")
+        
+        pregunta = input("Ingrese la pregunta: ")
+        opcionA = input("Ingrese la respuesta: ")
+        opcionB = input("Ingrese la respuesta: ")
+        opcionC = input("Ingrese la respuesta: ")
+        respuesta_correcta = input("Ingrese la respuesta correcta(A, B o C): ").upper()
+        while respuesta_correcta != "A" and respuesta_correcta != "B" and respuesta_correcta != "C":
+            respuesta_correcta = input("Respuesta incorrecta. Por favor, ingrese la respuesta correcta(A,B o C): ").upper()
+        opciones = [opcionA, opcionB, opcionC]
+        
+        pregunta = {
+            "pregunta": pregunta.title(), 
+            "opciones": opciones, 
+            "respuesta": respuesta_correcta
+        }
+        preguntas[categoria].append(pregunta)
+        preguntas.update({categoria:pregunta})
+        return print(preguntas)
+    while True:
+        print("\nMenú de opciones:")
+        print("A. Agregar pregunta")
+        print("B. Salir")
+        
+        opcion = str(input("Seleccione una opcion (A-B): ")).upper()
+        
+        if opcion == "A":
+            agregar_pregunta(preguntas)
+        elif opcion == "B":
+            break
+        else:
+            print("Opción no válida. Intente de nuevo.")
