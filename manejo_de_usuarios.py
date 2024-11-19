@@ -1,6 +1,6 @@
 from file_system import *
 
-def crear_usuario(archivo_json, datos) -> dict:
+def crear_usuario(datos) -> dict:
     """
     ¿Qué hace?: permite al usuario crear un usuario y contraseña para ingresar al sistema.
     ¿Qué recibe?: Recibe una lista que contendrá los datos del usuario en modo diccionario.
@@ -48,10 +48,6 @@ def iniciar_sesion(datos: dict) -> str:
     ¿Qué retorna?: Retorna un mensaje dependiendo si el inicio de sesión fue exitoso o no.
     """
     
-    # for clave, valor in objetos:
-    #     print(f"{clave}: {valor}")
-
-    # print(persona_1.get("edad")) # GET busca por clave
 
     usuarios = datos.get("usuarios")
     while True:

@@ -3,8 +3,10 @@ from file_system import *
 from manejo_de_usuarios import *
 import random
 import time
+
+
     
-def iniciar_juego(datos):
+def iniciar_juego(datos, vidas_del_usuario, puntos, puntos_por_correcta):
     
     #region temporizador SOLO EN PYGAME
     # def contador_regresivo(segundos):
@@ -46,7 +48,6 @@ def iniciar_juego(datos):
         ¿Que retorna?: 
                 - respuesta_correcta (bool): True si la respuesta es correcta, False si no lo es.
         '''
-        respuesta_correcta = False
         
         print("Pregunta:", pregunta["pregunta"])
 
@@ -64,8 +65,8 @@ def iniciar_juego(datos):
         
         indice = letras_opciones.index(respuesta_usuario)
         if pregunta["opciones"][indice] == pregunta["opciones"][letras_opciones.index(pregunta["respuesta"])]:
-            respuesta_correcta = True
-            puntos += 25
+            
+            puntos += puntos_por_correcta
             print(f'''
                   Tu respuesta es... ¡CORRECTA!
                   Tu puntuacion: {puntos} puntos!
@@ -74,7 +75,6 @@ def iniciar_juego(datos):
             mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos, datos)
             
         else:
-            respuesta_correcta = False
             if puntos > 10:
                 puntos -= 10
             else:
@@ -97,8 +97,7 @@ def iniciar_juego(datos):
                 categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
                 mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos, datos)        
         
-    vidas_del_usuario = 3
-    puntos = 0
+    
     
     categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
     mostrar_pregunta(pregunta_aleatoria, vidas_del_usuario, puntos, datos)
@@ -124,3 +123,27 @@ def ver_top10(datos):
         top10 = print(f"{i + 1}. Usuario: {top[i]['usuario']}, Puntuación: {top[i]['puntuacion']}")
 
     return top10
+
+def configuracion_del_juego(configuracion_del_juego):
+    
+    while True:
+        print("\nConfiguración del juego:")
+        print("A. Cambiar la cantidad de vidas")
+        print("B. Cambiar la cantidad de puntos por respuesta correcta")
+        print("C. Salir")
+        
+        
+        opcion = str(input("Seleccione una opcion (A-C): ")).upper()
+        
+        if opcion == "A":
+            vidas_del_usuario = int(input("Ingrese la cantidad de vidas deseadas: "))
+            configuracion_del_juego.update({"vidas": vidas_del_usuario})
+        elif opcion == "B":
+            puntos_por_correcta = int(input("Ingrese la cantidad de puntos por respuesta correcta: "))
+            configuracion_del_juego.update({"puntos_por_correcta": puntos_por_correcta})
+        elif opcion == "C":
+            break
+        else:
+            print("Opción no válida. Intente de nuevo.")
+    
+    return vidas_del_usuario, puntos_por_correcta
