@@ -19,15 +19,40 @@ def guardar_datos(datos: dict) -> str:
     with open("./Parcial/Preguntados-Grupo-SDT/usuarios.json", "w") as archivo:
         json.dump(datos, archivo)
 
-def eliminar_datos_previos(archivo_json: str, datos: dict) -> str:
+def eliminar_datos_previos( datos: dict) -> str:
     '''
         ¿Que hace?: Elimina los usuarios creados previamente
         ¿Que recibe?: El JSON de los usuarios y el diccionario datos vacío.
         ¿Que retorna?: Mensaje de OK
     '''
-    with open(archivo_json, "w") as archivo:
+    with open("./Parcial/Preguntados-Grupo-SDT/usuarios.json","w") as archivo:
         json.dump(datos, archivo)
         
     mensaje = print("Usuarios eliminados con exito")
+    
+    return mensaje
+
+
+def cargar_preguntas() -> dict:
+    with open("./Parcial/Preguntados-Grupo-SDT/preguntas.json", "r") as archivo:
+        data = json.load(archivo)
+        preguntas = data.get("preguntas", {}) 
+    return preguntas
+
+
+def agregar_pregunta_a_archivo(categoria, nueva_pregunta) -> str:
+    '''
+        ¿Que hace?: Agrega una nueva pregunta a la base de preguntas
+        ¿Que recibe?: El JSON de las preguntas y la pregunta a agregar
+        ¿Que retorna?: Mensaje de OK
+    '''
+    with open("./Parcial/Preguntados-Grupo-SDT/preguntas.json", "r") as archivo:
+        data = json.load(archivo)
+        
+    data["preguntas"][categoria].append(nueva_pregunta)
+    with open("./Parcial/Preguntados-Grupo-SDT/preguntas.json", "w") as archivo:
+        json.dump(data, archivo, indent=4, ensure_ascii=False)
+        
+    mensaje = print("Pregunta agregada con exito")
     
     return mensaje

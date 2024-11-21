@@ -1,4 +1,4 @@
-from preguntas import *
+
 from file_system import *
 from manejo_de_usuarios import *
 import random
@@ -11,7 +11,8 @@ def iniciar_juego(datos: dict, vidas_del_usuario: int, puntos: int, puntos_por_c
         ¿Que hace?: Comienza el juego, se elige aleatoriamente una pregunta y se muestra en pantalla.
         ¿Que recibe?: Los datos del usuario que juega, la cantidad de vidas y la cantidad de puntos y la configuracion del juego.
         ¿Que retorna?: La pregunta elegida aleatoriamente dentro de la categoría, que incluye el texto de la pregunta, las opciones y la respuesta correcta.'''
-    
+    while datos == "Volver":
+        return
     #region temporizador SOLO EN PYGAME
     # def contador_regresivo(segundos):
     #     '''
@@ -91,11 +92,15 @@ def iniciar_juego(datos: dict, vidas_del_usuario: int, puntos: int, puntos_por_c
             if vidas_del_usuario == 0:
                     print("Te quedaste sin vidas. Has perdido la partida.")
                     print(f"Tu puntuacion final es de {puntos} puntos.")
-                    partida = {
-                    "usuario": datos.get("usuarios")[-1]["nombre"],
-                    "puntuacion": puntos}
-                    datos["top_puntuaciones"].append(partida)
-                    return guardar_datos(datos)
+                    nombre_jugador = input("Ingrese su nombre de usuario: ")
+                    for jugador in datos["usuarios"]:
+                        if jugador["nombre"] == nombre_jugador:
+                            partida = {
+                            "usuario": nombre_jugador,
+                            "puntuacion": puntos}
+                            datos["top_puntuaciones"].append(partida)
+                            print("Partida guardada exitosamente.")
+                            return guardar_datos(datos)
             else:
                 print("Te quedan", vidas_del_usuario, "vidas restantes.")
                 categoria, pregunta_aleatoria = elegir_pregunta_aleatoria()
@@ -164,34 +169,41 @@ def menu_agregar_pregunta(preguntas: dict) -> dict:
     ¿Que recibe?: El diccionario con las preguntas
     ¿Que retorna?: El diccionario con las preguntas actualizado
     '''
+    def cargar_preguntas():
+            with open("./Parcial/Preguntados-Grupo-SDT/preguntas.json", "r") as archivo:
+                return json.load(archivo).get("preguntas", {})
+            
     def agregar_pregunta(preguntas:dict) -> dict:
         '''
-        ¿Que hace?: Agrega preguntas al diccionario de preguntas
-        ¿Que recibe?: El diccionario con las preguntas
-        ¿Que retorna?: El diccionario con las preguntas actualizado
+        ¿Qué hace?: Solicita datos para agregar una nueva pregunta.
+        ¿Qué recibe?: El diccionario con las preguntas actuales.
+        ¿Qué retorna?: El diccionario con las preguntas actualizado.
         '''
-    
-        categoria = input("Ingrese la categoria de la pregunta: ")
-        while categoria not in preguntas.keys():
-            categoria = input("Categoría Inexistente. Por favor, ingrese una categoría existente: ")
         
-        pregunta = input("Ingrese la pregunta: ")
-        opcionA = input("Ingrese la respuesta: ")
-        opcionB = input("Ingrese la respuesta: ")
-        opcionC = input("Ingrese la respuesta: ")
-        respuesta_correcta = input("Ingrese la respuesta correcta(A, B o C): ").upper()
-        while respuesta_correcta != "A" and respuesta_correcta != "B" and respuesta_correcta != "C":
-            respuesta_correcta = input("Respuesta incorrecta. Por favor, ingrese la respuesta correcta(A,B o C): ").upper()
-        opciones = [opcionA, opcionB, opcionC]
+        categoria = input("Ingrese la categoría de la pregunta: ").strip()
         
-        pregunta = {
-            "pregunta": pregunta.title(), 
-            "opciones": opciones, 
+        while categoria not in preguntas:
+            print(f"La categoría '{categoria}' no existe. Intente nuevamente.")
+            categoria = input("Ingrese la categoría de la pregunta: ").strip()
+
+        
+        pregunta_a_agregar = input("Ingrese la pregunta: ").strip()
+        opcionA = input("Ingrese la opción A: ").strip()
+        opcionB = input("Ingrese la opción B: ").strip()
+        opcionC = input("Ingrese la opción C: ").strip()
+
+        respuesta_correcta = input("Ingrese la respuesta correcta (A, B o C): ").strip().upper()
+        while respuesta_correcta not in ["A", "B", "C"]:
+            respuesta_correcta = input("Respuesta incorrecta. Por favor, ingrese la respuesta correcta (A, B o C): ").strip().upper()
+
+        nueva_pregunta = {
+            "pregunta": pregunta_a_agregar.title(),
+            "opciones": [opcionA, opcionB, opcionC],
             "respuesta": respuesta_correcta
         }
-        preguntas[categoria].append(pregunta)
-        preguntas.update({categoria:pregunta})
-        return print(preguntas)
+        
+        agregar_pregunta_a_archivo(categoria, nueva_pregunta)
+
     while True:
         print("\nMenú de opciones:")
         print("A. Agregar pregunta")
@@ -200,8 +212,10 @@ def menu_agregar_pregunta(preguntas: dict) -> dict:
         opcion = str(input("Seleccione una opcion (A-B): ")).upper()
         
         if opcion == "A":
+            preguntas = cargar_preguntas()
             agregar_pregunta(preguntas)
         elif opcion == "B":
+            print("Saliendo del menú...")
             break
         else:
             print("Opción no válida. Intente de nuevo.")
