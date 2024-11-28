@@ -1,0 +1,372 @@
+{
+    "preguntas": {
+        "Geografía": [
+            {
+                "pregunta": "¿Cuál es el país más grande del mundo por superficie?",
+                "opciones": [
+                    "Canadá",
+                    "Rusia",
+                    "China"
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "¿Cuál es el río más largo del mundo?",
+                "opciones": [
+                    "Amazonas",
+                    "Nilo",
+                    "Yangtsé"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Dónde se encuentra el desierto del Sahara?",
+                "opciones": [
+                    "Australia",
+                    "África",
+                    "Asia"
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "¿Cuál es la capital de Japón?",
+                "opciones": [
+                    "Seúl",
+                    "Tokio",
+                    "Kioto"
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "¿En qué continente está Argentina?",
+                "opciones": [
+                    "América",
+                    "Europa",
+                    "Oceanía"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿En qué continente está Egipto?",
+                "opciones": [
+                    "Asia",
+                    "Europa",
+                    "África"
+                ],
+                "respuesta": "C"
+            },
+            {
+                "pregunta": "¿Cuál es la capital de Australia?",
+                "opciones": [
+                    "Melbourne",
+                    "Sídney",
+                    "Canberra"
+                ],
+                "respuesta": "C"
+            },
+            {
+                "pregunta": "¿Qué océano separa América de Asia?",
+                "opciones": [
+                    "Atlántico",
+                    "Índico",
+                    "Pacífico"
+                ],
+                "respuesta": "C"
+            },
+            {
+                "pregunta": "¿Qué país tiene la mayor población mundial?",
+                "opciones": [
+                    "India",
+                    "China",
+                    "EE. UU."
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "¿Qué es el Himalaya?",
+                "opciones": [
+                    "Río",
+                    "Cordillera",
+                    "Ciudad"
+                ],
+                "respuesta": "B"
+            }
+        ],
+        "Ciencias": [
+            {
+                "pregunta": "¿Qué planeta es conocido como el planeta rojo?",
+                "opciones": [
+                    "Marte",
+                    "Venus",
+                    "Júpiter"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Qué elemento químico es más abundante en la atmósfera?",
+                "opciones": [
+                    "Oxígeno",
+                    "Nitrógeno",
+                    "Hidrógeno"
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "¿Cuál es la fórmula química del agua?",
+                "opciones": [
+                    "CO2",
+                    "H2O",
+                    "NaCl"
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "¿Qué órgano es responsable de bombear la sangre?",
+                "opciones": [
+                    "Pulmones",
+                    "Cerebro",
+                    "Corazón"
+                ],
+                "respuesta": "C"
+            },
+            {
+                "pregunta": "¿Qué tipo de animal es un delfín?",
+                "opciones": [
+                    "Pez",
+                    "Mamífero",
+                    "Anfibio"
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "¿Cuál es la ley de la gravedad?",
+                "opciones": [
+                    "Misma velocidad",
+                    "Viento",
+                    "Atracción por masa"
+                ],
+                "respuesta": "C"
+            },
+            {
+                "pregunta": "¿Qué es el ADN?",
+                "opciones": [
+                    "Ácido desoxirribonucleico",
+                    "Ácido ribonucleico",
+                    "Proteína"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Cómo producen su alimento las plantas?",
+                "opciones": [
+                    "Por fotosíntesis",
+                    "Por respiración",
+                    "Por digestión"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Qué gas  es más abundante en la atmósfera?",
+                "opciones": [
+                    "Oxígeno",
+                    "Nitrógeno",
+                    "CO2"
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "En una celula.. ¿Donde ocurre la respiración celular?",
+                "opciones": [
+                    "Núcleo",
+                    "Mitocondrias",
+                    "Ribosomas"
+                ],
+                "respuesta": "B"
+            }
+        ],
+        "Conocimiento General": [
+            {
+                "pregunta": "¿Cuál es el idioma más hablado en el mundo?",
+                "opciones": [
+                    "Español",
+                    "Inglés",
+                    "Mandarín"
+                ],
+                "respuesta": "C"
+            },
+            {
+                "pregunta": "¿Cuántos días tiene un año bisiesto?",
+                "opciones": [
+                    "366",
+                    "365",
+                    "364"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Cuál es el símbolo químico del oro?",
+                "opciones": [
+                    "Au",
+                    "Ag",
+                    "Fe"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Cuál es la moneda de Japón?",
+                "opciones": [
+                    "Yen",
+                    "Won",
+                    "Yuan"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Quién escribió 'Cien años de soledad'?",
+                "opciones": [
+                    "P. Neruda",
+                    "G. Márquez",
+                    "I. Allende"
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "¿Cuál es la capital de Francia?",
+                "opciones": [
+                    "Madrid",
+                    "Roma",
+                    "París"
+                ],
+                "respuesta": "C"
+            },
+            {
+                "pregunta": "¿Quién pintó la Mona Lisa?",
+                "opciones": [
+                    "Picasso",
+                    "Da Vinci",
+                    "Van Gogh"
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "¿En qué país se inventó el fútbol?",
+                "opciones": [
+                    "Brasil",
+                    "Inglaterra",
+                    "Argentina"
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "¿Quién fue el primer hombre en pisar la luna?",
+                "opciones": [
+                    "Neil Armstrong",
+                    "Yuri Gagarin",
+                    "Buzz Aldrin"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Quién escribió 'La teoría de la relatividad?'",
+                "opciones": [
+                    "Newton",
+                    "Einstein",
+                    "Galileo"
+                ],
+                "respuesta": "B"
+            }
+        ],
+        "Historia": [
+            {
+                "pregunta": "¿En qué año comenzó la Segunda Guerra Mundial?",
+                "opciones": [
+                    "1939",
+                    "1941",
+                    "1945"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Quién fue el primer presidente de los Estados Unidos?",
+                "opciones": [
+                    "Lincoln",
+                    "Jefferson",
+                    "Washington"
+                ],
+                "respuesta": "C"
+            },
+            {
+                "pregunta": "¿En qué país se originó el Renacimiento?",
+                "opciones": [
+                    "Francia",
+                    "Italia",
+                    "Alemania"
+                ],
+                "respuesta": "B"
+            },
+            {
+                "pregunta": "¿Quién fue el líder de la revolución rusa de 1917?",
+                "opciones": [
+                    "Lenin",
+                    "Stalin",
+                    "Trotsky"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Qué civilización construyó las pirámides de Giza?",
+                "opciones": [
+                    "Romanos",
+                    "Mayas",
+                    "Egipcios"
+                ],
+                "respuesta": "C"
+            },
+            {
+                "pregunta": "¿Quién descubrió América?",
+                "opciones": [
+                    "Colón",
+                    "Magallanes",
+                    "Vasco da Gama"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Qué civilización construyó el Machu Picchu?",
+                "opciones": [
+                    "Incas",
+                    "Aztecas",
+                    "Mayas"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿En qué año cayó el Imperio Romano?",
+                "opciones": [
+                    "476",
+                    "400",
+                    "500"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Quién fue el último emperador romano?",
+                "opciones": [
+                    "Rómulo Augusto",
+                    "Constantino",
+                    "Nerva"
+                ],
+                "respuesta": "A"
+            },
+            {
+                "pregunta": "¿Dónde nació Alejandro Magno?",
+                "opciones": [
+                    "Egipto",
+                    "Macedonia",
+                    "Roma"
+                ],
+                "respuesta": "B"
+            }
+        ]
+    }
+}
